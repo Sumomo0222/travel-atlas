@@ -112,6 +112,17 @@
     return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
   }
   window.__phfall = phFallbackSVG;
+  /* 弱网重试：加载失败先重试两次（带缓存穿透参数），仍失败才显示占位卡 */
+  window.__phretry = function (img) {
+    const n = +(img.dataset.retry || 0);
+    if (n < 2) {
+      img.dataset.retry = String(n + 1);
+      setTimeout(() => { img.src = img.src.split('?')[0] + '?r=' + Date.now(); }, 900);
+    } else {
+      img.onerror = null;
+      img.src = window.__phfall(img.dataset.cap);
+    }
+  };
 
   /* ---------- 筛选 ---------- */
   const match = e =>
@@ -321,7 +332,7 @@
       return `
       <figure class="ph">
         <img src="${src}" alt="${p.cap}" loading="lazy"
-             data-cap="${p.cap}" onerror="this.onerror=null;this.src=window.__phfall(this.dataset.cap)">
+             data-cap="${p.cap}" onerror="window.__phretry(this)">
         <figcaption>${p.cap}<i>PICTURE-${pad2(k + 1)}</i></figcaption>
       </figure>`;
     }).join('');
