@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>山河手帖 · 个人旅行地图</title>
+  <meta name="description" content="一座记录路线、照片与碎片日记的个人旅行地图。可缩放地图、时间轴、按年份 / 情绪 / 主题筛选，并生成专属回忆路线。">
+  <meta name="theme-color" content="#f3edda">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c23a20'/%3E%3Ctext x='16' y='22' font-size='15' text-anchor='middle' fill='%23f3edda' font-family='serif'%3E%E6%B8%B8%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="map" aria-label="旅行地图"></div>
+
+  <!-- 移动端打开手账栏 -->
+  <button class="rail-toggle" id="rail-toggle" aria-label="打开手账与筛选">☰ 手账</button>
+
+  <!-- 左栏：题头 + 筛选 -->
+  <div class="rail" id="rail">
+    <header class="masthead">
+      <p class="eyebrow" id="eyebrow">Personal Travel Atlas · 2019—2026</p>
+      <div class="title-row">
+        <h1>山河手帖</h1>
+        <span class="seal" aria-hidden="true">游</span>
+      </div>
+      <p class="tagline">把每一次出发，钉在同一张地图上——路线、照片，与碎片日记。</p>
+      <p class="stats" id="stats"></p>
+    </header>
+
+    <section class="filters" aria-label="筛选记忆">
+      <div class="f-head">
+        <h2>筛选记忆 <span>FILTER</span></h2>
+        <button id="btn-reset" hidden>重置 ✕</button>
+      </div>
+      <div class="f-group">
+        <h3><span>年份</span><i>YEAR</i></h3>
+        <div class="chips" id="chips-year"></div>
+      </div>
+      <div class="f-group">
+        <h3><span>情绪</span><i>MOOD</i></h3>
+        <div class="chips" id="chips-mood"></div>
+      </div>
+      <div class="f-group">
+        <h3><span>主题</span><i>THEME</i></h3>
+        <div class="chips" id="chips-theme"></div>
+      </div>
+      <p class="f-result" id="f-result"></p>
+    </section>
+
+    <button class="btn-primary" id="btn-route" aria-live="polite">✦ 生成回忆路线</button>
+
+    <div class="rail-tools">
+      <button id="btn-new" class="tool new">＋ 新的记忆</button>
+      <button id="btn-export" class="tool">导出</button>
+      <button id="btn-import" class="tool">导入</button>
+      <button id="btn-reset-sample" class="tool">恢复示例</button>
+      <input type="file" id="file-import" accept="application/json" hidden>
+    </div>
+    <button class="rail-close" id="rail-close" aria-label="收起手账栏">收起 ✕</button>
+  </div>
+
+  <!-- 右上：回忆路线面板 -->
+  <aside class="route-panel" id="route-panel" hidden aria-label="回忆路线">
+    <div class="rp-head">
+      <h2>回忆路线 <span>MEMORY ROUTE</span></h2>
+      <button id="rp-close" aria-label="收起面板">✕</button>
+    </div>
+    <p class="rp-poem" id="rp-poem"></p>
+    <dl class="rp-stats" id="rp-stats"></dl>
+    <ol class="rp-stops" id="rp-stops"></ol>
+    <div class="rp-actions">
+      <button class="btn-mini primary" id="btn-tour">▸ 放映回忆</button>
+      <button class="btn-mini" id="btn-clear">清除路线</button>
+    </div>
+  </aside>
+
+  <!-- 右侧：记忆明信片 -->
+  <aside class="memory-card" id="card" aria-hidden="true" aria-label="记忆详情">
+    <button class="card-close" id="card-close" aria-label="关闭">✕</button>
+    <div class="card-scroll">
+      <header class="card-head">
+        <span class="card-no" id="c-no"></span>
+        <h2><span id="c-city"></span> <small id="c-latin"></small></h2>
+      </header>
+      <div class="card-stamps" id="c-stamps"></div>
+      <p class="card-note" id="c-note" hidden></p>
+      <h3 class="card-title" id="c-title"></h3>
+      <div class="card-photos" id="c-photos"></div>
+      <ul class="card-frag" id="c-frag"></ul>
+      <footer class="card-foot">
+        <span id="c-coord"></span>
+        <span id="c-route-pos"></span>
+      </footer>
+      <div class="card-actions">
+        <button id="c-edit">✎ 编辑此页</button>
+        <button id="c-del">✂ 撕掉这一页</button>
+      </div>
+    </div>
+    <div class="card-nav">
+      <button id="c-prev">← 上一段</button>
+      <button id="c-next">下一段 →</button>
+    </div>
+  </aside>
+
+  <!-- 底部时间轴 -->
+  <footer class="timeline" aria-label="时间轴">
+    <div class="tl-label">时间轴 <span>TIMELINE</span></div>
+    <div class="tl-scroll" id="tl"></div>
+  </footer>
+
+  <!-- 左下：坐标读数 + 瓦片署名 -->
+  <div class="coords-chip" id="coords"></div>
+
+  <!-- 放映状态条 -->
+  <div class="tour-chip" id="tour-chip" hidden>
+    <span id="tour-text"></span>
+    <button id="tour-stop">停止</button>
+  </div>
+
+  <!-- 坐标拾取提示 -->
+  <div class="pick-hint" id="pick-hint" hidden>点击地图放置坐标 · 按 Esc 退出拾取</div>
+
+  <!-- 轻提示 -->
+  <div class="toast" id="toast" hidden></div>
+
+  <!-- 记忆编辑器 -->
+  <aside class="editor" id="editor" aria-hidden="true" aria-label="编辑记忆">
+    <header class="ed-head">
+      <h2><span id="ed-head-title">＋ 新的记忆</span> <span class="ed-sub" id="ed-head-sub">NEW MEMORY</span></h2>
+      <button id="ed-close" aria-label="关闭编辑器">✕</button>
+    </header>
+    <div class="ed-scroll">
+      <div class="ed-grid">
+        <label>城市 <i>*</i><input id="ed-city" type="text" placeholder="如：里斯本"></label>
+        <label>国家<input id="ed-country" type="text" placeholder="如：葡萄牙"></label>
+        <label>拉丁名<input id="ed-latin" type="text" placeholder="如：LISBOA"></label>
+        <label>日期 <i>*</i><input id="ed-date" type="date"></label>
+        <label>纬度 <i>*</i><input id="ed-lat" type="number" step="any" placeholder="38.72"></label>
+        <label>经度 <i>*</i><input id="ed-lng" type="number" step="any" placeholder="-9.14"></label>
+      </div>
+      <button type="button" class="btn-mini ed-pick" id="ed-pick">⌖ 在地图上拾取坐标</button>
+
+      <div class="ed-group">
+        <h3>情绪 <i>MOOD</i></h3>
+        <div class="chips" id="ed-moods"></div>
+      </div>
+      <div class="ed-group">
+        <h3>主题 <i>THEME</i></h3>
+        <div class="chips" id="ed-themes"></div>
+      </div>
+
+      <label class="ed-wide">标题<input id="ed-title" type="text" placeholder="给这段记忆一句话"></label>
+      <label class="ed-wide">手写批注<input id="ed-note" type="text" placeholder="如：第一次一个人出门"></label>
+
+      <div class="ed-group">
+        <h3>碎片日记 <i>FRAGMENTS</i><button type="button" class="ed-add" id="ed-add-frag">＋ 加一条</button></h3>
+        <div id="ed-frags"></div>
+      </div>
+      <div class="ed-group">
+        <h3>照片 <i>PHOTOS</i><button type="button" class="ed-add" id="ed-add-photo">＋ 加一张</button></h3>
+        <div id="ed-photos"></div>
+        <p class="ed-hint">来源填 picsum seed 或完整图片地址；说明印在照片下方。</p>
+      </div>
+    </div>
+    <footer class="ed-foot">
+      <button class="btn-mini danger" id="ed-del" hidden>删除此页</button>
+      <span class="ed-gap"></span>
+      <button class="btn-mini" id="ed-cancel">取消</button>
+      <button class="btn-mini primary ed-save" id="ed-save">保存并钉到地图 ✓</button>
+    </footer>
+  </aside>
+
+  <noscript><p class="noscript-note">需要启用 JavaScript 才能查看这张地图。</p></noscript>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" onerror="window.__noLeaflet=true"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
