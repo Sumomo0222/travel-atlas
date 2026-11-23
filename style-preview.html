@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>风格样张 · 山河手帖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Baloo+2:wght@600;800&family=ZCOOL+KuaiLe&family=Instrument+Sans:wght@400;500;700&family=Monoton&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#1c1c1a; font-family:'Noto Sans SC',sans-serif; color:#eee; padding:34px 26px 60px; }
+.top { max-width:1460px; margin:0 auto 26px; }
+.top h1 { font-size:15px; font-weight:500; letter-spacing:.4em; color:#bbb; }
+.top h1 b { color:#fff; font-weight:700; }
+.top p { margin-top:8px; font-size:12.5px; color:#888; letter-spacing:.08em; line-height:1.8; }
+main { max-width:1460px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+@media (max-width:1100px){ main { grid-template-columns:1fr; } }
+section { border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
+.sh { padding:20px 24px 16px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+.sh b { font-size:19px; }
+.sh span { font-size:10px; letter-spacing:.3em; opacity:.55; }
+.trait { padding:0 24px 16px; font-size:12.5px; line-height:1.8; opacity:.75; }
+.stage { margin:0 20px 20px; border-radius:10px; overflow:hidden; }
+/* 通用小组件排布 */
+.stage .row { display:flex; gap:14px; align-items:stretch; }
+.stage .map { position:relative; flex:1.25; min-height:220px; }
+.stage .side { flex:1; display:flex; flex-direction:column; gap:12px; }
+.tlbar { margin-top:12px; padding:12px 16px; display:flex; align-items:center; gap:14px; }
+.uibar { margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+
+/* ============ S1 午夜航图 ============ */
+.s1 { background:#0a1620; }
+.s1 .sh b { color:#dff3ff; font-family:'Chakra Petch','Noto Sans SC'; letter-spacing:.12em; }
+.s1 .sh span { color:#35d0ba; }
+.s1 .trait { color:#7fa8bd; }
+.s1 .stage { background:#0c1b28; border:1px solid rgba(90,170,220,.16); }
+.s1 .map {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(90,170,220,.09) 39px 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(90,170,220,.09) 39px 40px),
+    radial-gradient(140% 120% at 20% 0%, #10293a 0%, #0a1620 60%);
+}
+.s1 .route { position:absolute; inset:0; }
+.s1 .route path { fill:none; stroke:#35d0ba; stroke-width:1.6; stroke-dasharray:6 6; filter:drop-shadow(0 0 4px rgba(53,208,186,.7)); }
+.s1 .blip { position:absolute; width:9px; height:9px; border-radius:50%; background:#ffb84d; box-shadow:0 0 10px 2px rgba(255,184,77,.55); }
+.s1 .blip::after { content:''; position:absolute; inset:-7px; border:1px solid rgba(255,184,77,.5); border-radius:50%; }
+.s1 .coord { position:absolute; left:12px; bottom:9px; font-family:'Chakra Petch',monospace; font-size:9.5px; letter-spacing:.18em; color:#4d7d96; }
+.s1 .card { background:rgba(16,41,58,.85); border:1px solid rgba(90,170,220,.22); border-radius:8px; padding:14px 16px; }
+.s1 .card .no { font-family:'Chakra Petch'; font-size:9px; letter-spacing:.34em; color:#35d0ba; }
+.s1 .card h3 { font-family:'Chakra Petch','Noto Sans SC'; color:#e8f4fb; font-size:16px; font-weight:600; margin:6px 0 4px; letter-spacing:.06em; }
+.s1 .card .frag { font-size:12px; color:#9fc2d4; line-height:1.8; }
+.s1 .card .frag i { font-style:normal; font-family:'Chakra Petch'; color:#ffb84d; font-size:11px; margin-right:8px; }
+.s1 .tlbar { border-top:1px solid rgba(90,170,220,.14); font-family:'Chakra Petch'; }
+.s1 .yr { color:#e8f4fb; font-size:15px; font-weight:600; letter-spacing:.2em; }
+.s1 .dot { width:8px; height:8px; border-radius:50%; border:1px solid #35d0ba; display:inline-block; margin:0 5px; vertical-align:middle; }
+.s1 .dot.on { background:#35d0ba; box-shadow:0 0 8px rgba(53,208,186,.8); }
+.s1 .tlbar small { font-size:9px; letter-spacing:.28em; color:#4d7d96; margin-right:auto; }
+.s1 .chip { font-family:'Chakra Petch','Noto Sans SC'; font-size:11px; letter-spacing:.14em; color:#9fc2d4; border:1px solid rgba(90,170,220,.3); background:transparent; border-radius:3px; padding:6px 12px 5px; }
+.s1 .chip.on { color:#04141c; background:#35d0ba; border-color:#35d0ba; font-weight:600; }
+.s1 .go { font-family:'Chakra Petch','Noto Sans SC'; font-size:11.5px; letter-spacing:.2em; color:#04141c; background:linear-gradient(90deg,#35d0ba,#ffb84d); border:none; border-radius:3px; padding:10px 16px 9px; font-weight:700; }
+
+/* ============ S2 孟菲斯剪贴簿 ============ */
+.s2 { background:#fff3df; }
+.s2 .sh b { color:#1a1a1a; font-family:'ZCOOL KuaiLe','Baloo 2'; font-size:22px; }
+.s2 .sh span { color:#ff5d8f; }
+.s2 .trait { color:#6b5d4f; }
+.s2 .stage {
+  background:
+    radial-gradient(#ffd23f 2.6px, transparent 2.6px),
+    radial-gradient(#7ed0ff 2.6px, transparent 2.6px);
+  background-size:34px 34px, 34px 34px;
+  background-position:0 0, 17px 17px;
+  background-color:#fff8ec;
+  border:3px solid #1a1a1a; box-shadow:7px 7px 0 #1a1a1a;
+}
+.s2 .map { background:#ffe9d6; border:3px solid #1a1a1a; border-radius:6px; overflow:hidden; }
+.s2 .route path { fill:none; stroke:#ff5d3b; stroke-width:5; stroke-dasharray:14 10; stroke-linecap:round; }
+.s2 .pin { position:absolute; width:26px; height:26px; background:#ffd23f; border:3px solid #1a1a1a; border-radius:50% 50% 50% 0; transform:rotate(-45deg); box-shadow:3px 3px 0 #1a1a1a; }
+.s2 .sticker { position:absolute; right:10px; top:10px; background:#7ed0ff; border:3px solid #1a1a1a; border-radius:999px; padding:5px 12px; font-family:'ZCOOL KuaiLe'; font-size:12px; color:#1a1a1a; transform:rotate(6deg); box-shadow:3px 3px 0 #1a1a1a; }
+.s2 .card { background:#fff; border:3px solid #1a1a1a; border-radius:8px; padding:14px 16px; box-shadow:6px 6px 0 #ff5d8f; transform:rotate(-1.2deg); }
+.s2 .card .no { display:inline-block; background:#ffd23f; border:2.5px solid #1a1a1a; border-radius:6px; font-family:'Baloo 2'; font-size:10px; padding:2px 8px; color:#1a1a1a; }
+.s2 .card h3 { font-family:'ZCOOL KuaiLe'; font-size:17px; color:#1a1a1a; margin:8px 0 5px; }
+.s2 .card .frag { font-size:12.5px; color:#4a4034; line-height:1.8; }
+.s2 .card .frag i { font-style:normal; font-family:'Baloo 2'; color:#ff5d3b; margin-right:6px; }
+.s2 .tlbar { background:#fff; border:3px solid #1a1a1a; border-radius:8px; font-family:'ZCOOL KuaiLe'; }
+.s2 .yr { color:#1a1a1a; font-family:'Baloo 2'; font-weight:800; font-size:19px; transform:rotate(-3deg); display:inline-block; }
+.s2 .dot { width:14px; height:14px; border-radius:50%; border:3px solid #1a1a1a; background:#7ed0ff; display:inline-block; margin:0 6px; vertical-align:middle; }
+.s2 .dot.on { background:#ff5d8f; }
+.s2 .tlbar small { font-size:10px; color:#6b5d4f; margin-right:auto; letter-spacing:.1em; }
+.s2 .chip { font-family:'ZCOOL KuaiLe'; font-size:12.5px; color:#1a1a1a; background:#fff; border:2.5px solid #1a1a1a; border-radius:999px; padding:5px 13px 4px; box-shadow:3px 3px 0 #1a1a1a; }
+.s2 .chip.on { background:#ffd23f; transform:rotate(-2deg); }
+.s2 .go { font-family:'ZCOOL KuaiLe'; font-size:13.5px; color:#fff; background:#ff5d3b; border:3px solid #1a1a1a; border-radius:10px; padding:9px 18px 8px; box-shadow:4px 4px 0 #1a1a1a; }
+
+/* ============ S3 瑞士画刊 ============ */
+.s3 { background:#f5f4f0; }
+.s3 .sh b { color:#111; font-family:'Instrument Sans','Noto Sans SC'; font-weight:700; letter-spacing:.02em; }
+.s3 .sh span { color:#999; }
+.s3 .trait { color:#666; }
+.s3 .stage { background:#f5f4f0; border:1px solid #ddd; }
+.s3 .map { background:
+  linear-gradient(#e8e6e0 1px, transparent 1px) 0 0/ 56px 56px,
+  linear-gradient(90deg, #e8e6e0 1px, transparent 1px) 0 0/ 56px 56px,
+  #f5f4f0; border:1px solid #ddd; }
+.s3 .route path { fill:none; stroke:#e63a2e; stroke-width:1.4; stroke-dasharray:3 5; }
+.s3 .pin { position:absolute; width:11px; height:11px; background:#e63a2e; border-radius:50%; }
+.s3 .pin small { position:absolute; left:16px; top:-2px; font-family:'Instrument Sans'; font-size:9.5px; letter-spacing:.14em; color:#111; white-space:nowrap; }
+.s3 .card { background:#fff; border:1px solid #ddd; padding:16px 18px; }
+.s3 .card .no { font-family:'Instrument Sans'; font-size:9px; letter-spacing:.3em; color:#e63a2e; }
+.s3 .card h3 { font-family:'Instrument Sans','Noto Sans SC'; font-size:17px; font-weight:700; color:#111; margin:8px 0 6px; letter-spacing:-.01em; }
+.s3 .card .frag { font-size:12px; color:#555; line-height:1.9; }
+.s3 .card .frag i { font-style:normal; font-family:'Instrument Sans'; font-size:10.5px; color:#999; margin-right:10px; letter-spacing:.08em; }
+.s3 .tlbar { border-top:1px solid #ddd; font-family:'Instrument Sans'; }
+.s3 .yr { color:#111; font-weight:700; font-size:16px; letter-spacing:-.02em; }
+.s3 .dot { width:7px; height:7px; border-radius:50%; background:#d5d2ca; display:inline-block; margin:0 7px; vertical-align:middle; }
+.s3 .dot.on { background:#e63a2e; }
+.s3 .tlbar small { font-size:8.5px; letter-spacing:.3em; color:#aaa; margin-right:auto; }
+.s3 .chip { font-family:'Instrument Sans','Noto Sans SC'; font-size:11.5px; color:#333; background:transparent; border:1px solid #ccc; border-radius:2px; padding:6px 13px 5px; }
+.s3 .chip.on { color:#fff; background:#111; border-color:#111; }
+.s3 .go { font-family:'Instrument Sans','Noto Sans SC'; font-size:11.5px; letter-spacing:.24em; color:#fff; background:#e63a2e; border:none; border-radius:2px; padding:11px 20px 10px; font-weight:500; }
+
+/* ============ S4 霓虹夜游 ============ */
+.s4 { background:#0b0714; }
+.s4 .sh b { color:#ffd9f2; font-family:'Noto Sans SC'; font-weight:900; text-shadow:0 0 14px rgba(255,62,200,.6); }
+.s4 .sh span { font-family:'Monoton'; font-size:13px; color:#ff3ec8; letter-spacing:.2em; text-shadow:0 0 12px rgba(255,62,200,.8); }
+.s4 .trait { color:#8f7fb8; }
+.s4 .stage { background:#0e0a1b; border:1px solid rgba(255,62,200,.28); box-shadow:0 0 30px rgba(255,62,200,.12), inset 0 0 40px rgba(62,201,255,.05); }
+.s4 .map { background:
+  repeating-linear-gradient(0deg, transparent 0 45px, rgba(255,62,200,.08) 45px 46px),
+  repeating-linear-gradient(90deg, transparent 0 45px, rgba(62,201,255,.08) 45px 46px),
+  radial-gradient(120% 100% at 50% 110%, #1d0f38 0%, #0b0714 70%); }
+.s4 .route path { fill:none; stroke:#3ec9ff; stroke-width:2; stroke-dasharray:2 7; stroke-linecap:round; filter:drop-shadow(0 0 5px rgba(62,201,255,.9)); }
+.s4 .pin { position:absolute; width:10px; height:10px; border-radius:50%; background:#ff3ec8; box-shadow:0 0 14px 3px rgba(255,62,200,.6); }
+.s4 .pin small { position:absolute; left:15px; top:-3px; font-family:'Monoton'; font-size:10px; color:#3ec9ff; text-shadow:0 0 10px rgba(62,201,255,.9); white-space:nowrap; }
+.s4 .card { background:rgba(29,15,56,.6); backdrop-filter:blur(6px); border:1px solid rgba(62,201,255,.35); border-radius:10px; padding:15px 17px; }
+.s4 .card .no { font-family:'Monoton'; font-size:10px; color:#3ec9ff; text-shadow:0 0 10px rgba(62,201,255,.8); letter-spacing:.2em; }
+.s4 .card h3 { color:#ffd9f2; font-size:16px; font-weight:900; margin:7px 0 5px; text-shadow:0 0 12px rgba(255,62,200,.5); }
+.s4 .card .frag { font-size:12px; color:#b7a6df; line-height:1.8; }
+.s4 .card .frag i { font-style:normal; font-family:'Monoton'; color:#ff3ec8; margin-right:8px; font-size:11px; }
+.s4 .tlbar { border-top:1px solid rgba(255,62,200,.25); font-family:'Monoton'; }
+.s4 .yr { color:#ffd9f2; font-size:15px; text-shadow:0 0 12px rgba(255,62,200,.7); }
+.s4 .dot { width:9px; height:9px; border-radius:50%; border:1.5px solid #8f7fb8; display:inline-block; margin:0 6px; vertical-align:middle; }
+.s4 .dot.on { background:#ff3ec8; border-color:#ff3ec8; box-shadow:0 0 12px rgba(255,62,200,.9); }
+.s4 .tlbar small { font-size:9px; letter-spacing:.3em; color:#8f7fb8; margin-right:auto; font-family:'Instrument Sans'; }
+.s4 .chip { font-family:'Noto Sans SC'; font-size:11.5px; color:#b7a6df; background:rgba(62,201,255,.06); border:1px solid rgba(62,201,255,.4); border-radius:999px; padding:6px 13px 5px; }
+.s4 .chip.on { color:#0b0714; background:#ff3ec8; border-color:#ff3ec8; box-shadow:0 0 16px rgba(255,62,200,.55); font-weight:700; }
+.s4 .go { font-family:'Noto Sans SC'; font-size:12px; letter-spacing:.18em; color:#ffd9f2; background:transparent; border:1.5px solid #3ec9ff; border-radius:999px; padding:9px 18px 8px; text-shadow:0 0 10px rgba(62,201,255,.8); box-shadow:0 0 18px rgba(62,201,255,.25), inset 0 0 12px rgba(62,201,255,.12); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1><b>风格样张</b> · STYLE SAMPLES</h1>
+  <p>同一组内容（撒哈拉的一夜 + 时间轴 + 筛选 + 按钮），四种完全不同的皮肤。挑一种，我把整站地图、记忆卡、路线动画全部换成它的语言。</p>
+</div>
+<main>
+
+  <!-- S1 午夜航图 -->
+  <section class="s1">
+    <div class="sh"><b>01 午夜航图</b><span>MIDNIGHT CHART</span></div>
+    <p class="trait">深色航海图 × 荧光航线 —— 像深夜舰桥上的导航台：网格坐标、发光信标、琥珀与青绿的仪表色。冷静、克制、极客。</p>
+    <div class="stage">
+      <div class="row">
+        <div class="map">
+          <svg class="route" viewBox="0 0 300 220" preserveAspectRatio="none"><path d="M28 180 Q120 60 268 92"/></svg>
+          <span class="blip" style="left:24px; top:172px;"></span>
+          <span class="blip" style="left:145px; top:96px;"></span>
+          <span class="blip" style="left:262px; top:86px;"></span>
+          <span class="coord">N 31.08° W 4.01° · MERZOUGA</span>
+        </div>
+        <div class="side">
+          <div class="card">
+            <span class="no">NO.11 / 16 — SAHARA NIGHT</span>
+            <h3>撒哈拉的夜，星星密得让人失语</h3>
+            <p class="frag"><i>23:40</i>躺在沙脊上看银河，流星划过三次，许愿都来不及。</p>
+          </div>
+          <div class="uibar">
+            <button class="chip on">震撼</button><button class="chip">治愈</button><button class="chip">热血</button>
+            <button class="go">✦ 生成回忆航线</button>
+          </div>
+        </div>
+      </div>
+      <div class="tlbar"><small>TIMELINE</small><span class="yr">2024</span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </section>
+
+  <!-- S2 孟菲斯剪贴簿 -->
+  <section class="s2">
+    <div class="sh"><b>02 孟菲斯剪贴簿</b><span>MEMPHIS SCRAPBOOK</span></div>
+    <p class="trait">活泼拼贴 × 手账涂鸦 —— 粗描边、硬投影、贴纸胶带，像一本青少年旅行剪贴簿：快乐、热闹、肆无忌惮。</p>
+    <div class="stage">
+      <div class="row">
+        <div class="map">
+          <svg class="route" viewBox="0 0 300 220" preserveAspectRatio="none"><path d="M30 175 Q130 40 265 90"/></svg>
+          <span class="pin" style="left:22px; top:165px;"></span>
+          <span class="pin" style="left:255px; top:80px;"></span>
+          <span class="sticker">记忆 No.7 ★</span>
+        </div>
+        <div class="side">
+          <div class="card">
+            <span class="no">NO.07</span>
+            <h3>撒哈拉的夜，星星密得让人失语！</h3>
+            <p class="frag"><i>23:40 ·</i>躺在沙脊上看银河，流星划过三次，许愿都来不及！</p>
+          </div>
+          <div class="uibar">
+            <button class="chip on">震撼</button><button class="chip">治愈</button><button class="chip">热血</button>
+            <button class="go">✦ 连成回忆路线!</button>
+          </div>
+        </div>
+      </div>
+      <div class="tlbar"><small>时间轴 →</small><span class="yr">2024</span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </section>
+
+  <!-- S3 瑞士画刊 -->
+  <section class="s3">
+    <div class="sh"><b>03 瑞士画刊</b><span>SWISS EDITORIAL</span></div>
+    <p class="trait">极简杂志 × 制表排版 —— 近白底、发丝线、一粒红点，像 Monocle 的城市特辑：安静、精确、克制到骨子里。</p>
+    <div class="stage">
+      <div class="row">
+        <div class="map">
+          <svg class="route" viewBox="0 0 300 220" preserveAspectRatio="none"><path d="M28 178 Q120 62 268 92"/></svg>
+          <span class="pin" style="left:24px; top:172px;"><small>MERZOUGA</small></span>
+          <span class="pin" style="left:262px; top:86px;"><small>ROME</small></span>
+        </div>
+        <div class="side">
+          <div class="card">
+            <span class="no">NO.11 — SAHARA</span>
+            <h3>撒哈拉的夜，星星密得让人失语</h3>
+            <p class="frag"><i>23:40</i>躺在沙脊上看银河，流星划过三次，许愿都来不及。</p>
+          </div>
+          <div class="uibar">
+            <button class="chip on">震撼</button><button class="chip">治愈</button><button class="chip">热血</button>
+            <button class="go">生成回忆路线 →</button>
+          </div>
+        </div>
+      </div>
+      <div class="tlbar"><small>TIMELINE</small><span class="yr">2024</span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </section>
+
+  <!-- S4 霓虹夜游 -->
+  <section class="s4">
+    <div class="sh"><b>04 霓虹夜游</b><span>NEON NIGHT</span></div>
+    <p class="trait">赛博夜色 × 霓虹招牌 —— 近黑的紫夜、发光的青与品红，像午夜城市漫游者的掌上导览：迷离、电子、有夜气。</p>
+    <div class="stage">
+      <div class="row">
+        <div class="map">
+          <svg class="route" viewBox="0 0 300 220" preserveAspectRatio="none"><path d="M28 178 Q120 62 268 92"/></svg>
+          <span class="pin" style="left:24px; top:172px;"><small>SAHARA</small></span>
+          <span class="pin" style="left:262px; top:86px;"><small>ROME</small></span>
+        </div>
+        <div class="side">
+          <div class="card">
+            <span class="no">NO.11</span>
+            <h3>撒哈拉的夜，星星密得让人失语</h3>
+            <p class="frag"><i>23:40</i>躺在沙脊上看银河，流星划过三次，许愿都来不及。</p>
+          </div>
+          <div class="uibar">
+            <button class="chip on">震撼</button><button class="chip">治愈</button><button class="chip">热血</button>
+            <button class="go">✦ 生成回忆路线</button>
+          </div>
+        </div>
+      </div>
+      <div class="tlbar"><small>TIMELINE</small><span class="yr">2024</span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

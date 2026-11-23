@@ -180,14 +180,14 @@
       const icon = L.divIcon({
         className: 'pin-wrap',
         html: `<div class="pin" style="--i:${i}">
-          <svg viewBox="0 0 24 30" aria-hidden="true">
-            <path d="M12 1.2C7.2 1.2 3.4 5 3.4 9.7c0 5.9 8.6 12.9 8.6 12.9s8.6-7 8.6-12.9C20.6 5 16.8 1.2 12 1.2z"/>
-            <circle class="hole" cx="12" cy="9.7" r="3.1"/>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="pin-dot" cx="12" cy="12" r="10"/>
+            <circle class="pin-hole" cx="12" cy="12" r="3.4"/>
           </svg>
           <span class="pin-label${e.labelSide ? ' pin-label--' + e.labelSide : ''}">${e.city}</span>
         </div>`,
-        iconSize: [30, 40],
-        iconAnchor: [15, 37],
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
       });
       const m = L.marker(e.coord, { icon, riseOnHover: true, zIndexOffset: 100 })
         .addTo(markerLayer)
@@ -300,15 +300,7 @@
 
   function postmarkSVG(e) {
     const [y, m, d] = e.date.split('-');
-    return `<svg class="postmark" width="118" height="58" viewBox="0 0 118 58" aria-hidden="true">
-      <circle class="pm-ring" cx="29" cy="29" r="24" stroke-width="1.6"/>
-      <circle class="pm-ring" cx="29" cy="29" r="19" stroke-width="1" stroke-dasharray="2 3"/>
-      <text class="pm-y" x="29" y="27" text-anchor="middle">${y}</text>
-      <text class="pm-d" x="29" y="39" text-anchor="middle">${m}·${d}</text>
-      <path class="pm-wave" d="M58 20c5-4 10 4 15 0s10 4 15 0 10 4 15 0 10 4 15 0"/>
-      <path class="pm-wave" d="M58 29c5-4 10 4 15 0s10 4 15 0 10 4 15 0 10 4 15 0"/>
-      <path class="pm-wave" d="M58 38c5-4 10 4 15 0s10 4 15 0 10 4 15 0 10 4 15 0"/>
-    </svg>`;
+    return `<div class="date-tab"><b>${y}.${m}.${d}</b><span>${e.latin}</span></div>`;
   }
 
   function fillCard(e) {
@@ -431,10 +423,10 @@
     const totalPts = perLeg.reduce((a, b) => a + b, 0);
 
     routeLine = L.polyline([], {
-      color: '#c23a20',
-      weight: 2.2,
-      opacity: .88,
-      dashArray: '6 9',
+      color: '#e63a2e',
+      weight: 1.7,
+      opacity: .9,
+      dashArray: '3 6',
       lineCap: 'round',
       className: 'route-line',
     }).addTo(map);
@@ -805,7 +797,7 @@
     $('#ed-lng').value = ev.latlng.lng.toFixed(4);
     if (pickMarker) pickMarker.setLatLng(ev.latlng);
     else pickMarker = L.circleMarker(ev.latlng, {
-      radius: 7, color: '#c23a20', weight: 2, fillColor: '#c23a20', fillOpacity: .35,
+      radius: 7, color: '#e63a2e', weight: 2, fillColor: '#e63a2e', fillOpacity: .35,
     }).addTo(map);
     setPick(false);
     toast('坐标已放进表单 ✓');

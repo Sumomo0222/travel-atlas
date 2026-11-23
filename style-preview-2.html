@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>风格样张 · 第二批 · 山河手帖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;800&family=Cormorant+Garamond:ital,wght@1,500&family=Special+Elite&family=Archivo+Black&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@600;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#1c1c1a; font-family:'Noto Sans SC',sans-serif; color:#eee; padding:34px 26px 60px; }
+.top { max-width:1460px; margin:0 auto 26px; }
+.top h1 { font-size:15px; font-weight:500; letter-spacing:.4em; color:#bbb; }
+.top h1 b { color:#fff; font-weight:700; }
+.top p { margin-top:8px; font-size:12.5px; color:#888; letter-spacing:.08em; line-height:1.8; }
+main { max-width:1460px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+@media (max-width:1100px){ main { grid-template-columns:1fr; } }
+section { border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
+.sh { padding:20px 24px 16px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+.sh b { font-size:19px; }
+.sh span { font-size:10px; letter-spacing:.3em; opacity:.55; }
+.trait { padding:0 24px 16px; font-size:12.5px; line-height:1.8; opacity:.75; }
+.stage { margin:0 20px 20px; border-radius:10px; overflow:hidden; }
+.stage .row { display:flex; gap:14px; align-items:stretch; }
+.stage .map { position:relative; flex:1.25; min-height:220px; }
+.stage .side { flex:1; display:flex; flex-direction:column; gap:12px; }
+.tlbar { margin-top:12px; padding:12px 16px; display:flex; align-items:center; gap:14px; }
+.uibar { margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+
+/* ============ S5 靛蓝和风 ============ */
+.s5 { background:#1c3450; }
+.s5 .sh b { color:#f2ead8; font-family:'Shippori Mincho','Noto Serif SC',serif; font-weight:800; letter-spacing:.1em; }
+.s5 .sh span { color:#d9a441; font-family:'Cormorant Garamond'; font-size:13px; }
+.s5 .trait { color:#9db4cd; }
+.s5 .stage { background:#f2ead8; border:1px solid #15293f; }
+.s5 .map { background:
+  radial-gradient(circle at 50% 118%, #1c3450 0 8px, transparent 9px) 0 0/ 44px 30px,
+  linear-gradient(#eadfc6, #f2ead8); }
+.s5 .route path { fill:none; stroke:#b5443a; stroke-width:2; stroke-dasharray:1 7; stroke-linecap:round; }
+.s5 .pin { position:absolute; width:16px; height:16px; border-radius:50%; background:#b5443a; border:2px solid #f2ead8; box-shadow:0 1px 0 rgba(28,52,80,.4); }
+.s5 .pin small { position:absolute; left:19px; top:0; writing-mode:vertical-rl; font-family:'Shippori Mincho','Noto Serif SC'; font-size:10px; color:#1c3450; letter-spacing:.2em; }
+.s5 .vlab { position:absolute; right:12px; top:10px; writing-mode:vertical-rl; font-family:'Shippori Mincho','Noto Serif SC'; font-size:12px; letter-spacing:.5em; color:#1c3450; opacity:.75; }
+.s5 .card { background:#f8f2e2; border:1px solid #c9b98f; border-top:4px solid #1c3450; padding:14px 16px; }
+.s5 .card .no { font-family:'Cormorant Garamond'; font-style:italic; font-size:12px; color:#b5443a; }
+.s5 .card h3 { font-family:'Shippori Mincho','Noto Serif SC'; font-weight:800; color:#22334a; font-size:16.5px; margin:7px 0 6px; }
+.s5 .card .frag { font-family:'Noto Serif SC',serif; font-size:12px; color:#4a5a6e; line-height:1.9; }
+.s5 .card .frag i { font-style:normal; font-family:'Cormorant Garamond'; color:#b5443a; margin-right:8px; }
+.s5 .tlbar { border-top:1px solid #c9b98f; }
+.s5 .yr { font-family:'Cormorant Garamond'; font-style:italic; color:#22334a; font-size:18px; }
+.s5 .dot { width:9px; height:9px; border-radius:50%; background:#d9cdb0; display:inline-block; margin:0 6px; vertical-align:middle; }
+.s5 .dot.on { background:#b5443a; }
+.s5 .tlbar small { font-size:9px; letter-spacing:.34em; color:#8a9aad; margin-right:auto; font-family:'Cormorant Garamond'; }
+.s5 .chip { font-family:'Noto Serif SC',serif; font-size:12px; color:#22334a; border:1px solid #1c3450; background:transparent; border-radius:2px; padding:5px 12px 4px; }
+.s5 .chip.on { color:#f2ead8; background:#1c3450; }
+.s5 .go { font-family:'Shippori Mincho','Noto Serif SC'; font-size:12.5px; letter-spacing:.3em; color:#f2ead8; background:#b5443a; border:1px solid #8f342d; padding:10px 18px 9px; font-weight:800; }
+
+/* ============ S6 航空信件 ============ */
+.s6 { background:#c9b28a; }
+.s6 .sh b { color:#3a2e20; font-family:'Special Elite','Noto Serif SC'; }
+.s6 .sh span { color:#a33c30; }
+.s6 .trait { color:#5c4b35; }
+.s6 .stage {
+  background:#e8dbc0;
+  border:14px solid transparent;
+  border-image: repeating-linear-gradient(45deg, #a33c30 0 16px, #e8dbc0 16px 30px, #2a5d8f 30px 46px, #e8dbc0 46px 60px) 14;
+  border-radius:4px;
+}
+.s6 .map { background:
+  radial-gradient(rgba(58,46,32,.07) 1px, transparent 1px) 0 0/ 9px 9px,
+  #ded0b0; border:1.5px dashed #8a7355; }
+.s6 .route .r1 { fill:none; stroke:#a33c30; stroke-width:1.8; stroke-dasharray:8 7; }
+.s6 .route .r2 { fill:none; stroke:#2a5d8f; stroke-width:1.8; stroke-dasharray:8 7; stroke-dashoffset:-8; }
+.s6 .stamp { position:absolute; right:10px; top:10px; width:58px; height:66px; background:#f2e7cd; border:1px solid #8a7355; padding:4px;
+  background-image:radial-gradient(circle at 4px 4px, transparent 2.6px, #f2e7cd 2.8px); }
+.s6 .stamp b { display:block; height:100%; border:1px solid #a33c30; color:#a33c30; font-family:'Special Elite'; font-size:9px; text-align:center; padding-top:14px; letter-spacing:.08em; line-height:1.7; }
+.s6 .card { background:#f6efdd; border:1px solid #b09c78; padding:13px 16px; }
+.s6 .card .no { font-family:'Special Elite'; font-size:10px; letter-spacing:.22em; color:#2a5d8f; }
+.s6 .card h3 { font-family:'Noto Serif SC',serif; font-weight:900; color:#3a2e20; font-size:15.5px; margin:7px 0 6px; }
+.s6 .card .frag { font-family:'Special Elite','Noto Serif SC'; font-size:11.5px; color:#6b5a41; line-height:1.85; }
+.s6 .card .frag i { font-style:normal; color:#a33c30; margin-right:8px; }
+.s6 .tlbar { border-top:1px solid #b09c78; font-family:'Special Elite'; }
+.s6 .yr { color:#3a2e20; font-size:17px; }
+.s6 .dot { width:10px; height:10px; border:1.5px dashed #8a7355; background:#e8dbc0; display:inline-block; margin:0 6px; vertical-align:middle; }
+.s6 .dot.on { background:#a33c30; border:1.5px solid #a33c30; }
+.s6 .tlbar small { font-size:9px; letter-spacing:.3em; color:#8a7355; margin-right:auto; }
+.s6 .chip { font-family:'Special Elite','Noto Serif SC'; font-size:11.5px; color:#3a2e20; background:#f6efdd; border:1px solid #b09c78; border-left:5px solid #b09c78; border-radius:2px; padding:5px 12px 4px; }
+.s6 .chip.on { background:#a33c30; color:#f6efdd; border-color:#a33c30; border-left-color:#2a5d8f; }
+.s6 .go { font-family:'Special Elite','Noto Serif SC'; font-size:12px; letter-spacing:.14em; color:#f6efdd; background:#2a5d8f; border:1.5px solid #1d4569; padding:10px 18px 9px; }
+
+/* ============ S7 新粗野 ============ */
+.s7 { background:#fffdf5; }
+.s7 .sh b { color:#111; font-family:'Archivo Black','Noto Sans SC'; font-weight:900; font-size:21px; text-transform:uppercase; }
+.s7 .sh span { color:#ff5d3b; font-family:'Archivo Black'; }
+.s7 .trait { color:#333; font-weight:500; }
+.s7 .stage { background:#fffdf5; border:4px solid #111; box-shadow:9px 9px 0 #111; }
+.s7 .map { background:#b8f53d; border:4px solid #111; }
+.s7 .route path { fill:none; stroke:#111; stroke-width:5; stroke-dasharray:16 10; }
+.s7 .pin { position:absolute; width:22px; height:22px; background:#ff90e8; border:4px solid #111; transform:rotate(45deg); }
+.s7 .map b { position:absolute; left:10px; top:8px; font-family:'Archivo Black','Noto Sans SC'; font-weight:900; font-size:34px; color:#111; opacity:.18; letter-spacing:.02em; }
+.s7 .card { background:#90e8ff; border:4px solid #111; padding:13px 16px; box-shadow:6px 6px 0 #111; }
+.s7 .card .no { display:inline-block; background:#111; color:#b8f53d; font-family:'Archivo Black'; font-size:10px; padding:3px 9px; }
+.s7 .card h3 { font-family:'Noto Sans SC'; font-weight:900; color:#111; font-size:16px; margin:8px 0 5px; }
+.s7 .card .frag { font-size:12.5px; font-weight:700; color:#111; line-height:1.75; }
+.s7 .card .frag i { font-style:normal; background:#ff90e8; padding:1px 6px; margin-right:6px; border:2px solid #111; font-weight:900; font-size:10.5px; }
+.s7 .tlbar { background:#ffd23f; border:4px solid #111; font-family:'Archivo Black','Noto Sans SC'; }
+.s7 .yr { color:#111; font-weight:900; font-size:19px; }
+.s7 .dot { width:15px; height:15px; background:#fff; border:3.5px solid #111; display:inline-block; margin:0 6px; vertical-align:middle; }
+.s7 .dot.on { background:#ff5d3b; }
+.s7 .tlbar small { font-size:10px; font-weight:900; color:#111; margin-right:auto; letter-spacing:.14em; }
+.s7 .chip { font-family:'Noto Sans SC'; font-weight:900; font-size:12px; color:#111; background:#fff; border:3px solid #111; border-radius:0; padding:5px 13px 4px; box-shadow:4px 4px 0 #111; }
+.s7 .chip.on { background:#ff90e8; }
+.s7 .go { font-family:'Noto Sans SC'; font-weight:900; font-size:13px; color:#111; background:#b8f53d; border:4px solid #111; border-radius:0; padding:8px 18px 7px; box-shadow:5px 5px 0 #111; }
+
+/* ============ S8 水墨长卷 ============ */
+.s8 { background:#ece9df; }
+.s8 .sh b { color:#2b2a26; font-family:'Ma Shan Zheng','Noto Serif SC'; font-size:24px; }
+.s8 .sh span { color:#8b857a; }
+.s8 .trait { color:#6e6a60; }
+.s8 .stage { background:
+  radial-gradient(60% 90% at 80% 100%, rgba(43,42,38,.06), transparent 60%),
+  #f4f1e7; border:1px solid #d9d4c4; }
+.s8 .map { background:#f4f1e7; border:1px solid #d9d4c4; }
+.s8 .mount { position:absolute; inset:auto 0 0 0; height:100%; opacity:.5; }
+.s8 .route path { fill:none; stroke:#43413a; stroke-width:2.4; stroke-linecap:round; stroke-dasharray:26 10; opacity:.8; }
+.s8 .pin { position:absolute; width:12px; height:12px; border-radius:50%; background:#a63a2e; }
+.s8 .pin small { position:absolute; left:16px; top:-4px; font-family:'Ma Shan Zheng','Noto Serif SC'; font-size:14px; color:#2b2a26; white-space:nowrap; }
+.s8 .seal { position:absolute; right:12px; bottom:12px; width:26px; height:26px; background:#a63a2e; color:#f4f1e7; font-family:'Ma Shan Zheng'; font-size:15px; display:grid; place-items:center; border-radius:4px; }
+.s8 .card { background:transparent; border-left:3px solid #a63a2e; padding:10px 14px; }
+.s8 .card .no { font-family:'Noto Serif SC'; font-size:10px; letter-spacing:.4em; color:#8b857a; }
+.s8 .card h3 { font-family:'Ma Shan Zheng','Noto Serif SC'; color:#2b2a26; font-size:20px; font-weight:400; margin:6px 0 6px; }
+.s8 .card .frag { font-family:'Noto Serif SC',serif; font-size:12px; color:#55524a; line-height:2; }
+.s8 .card .frag i { font-style:normal; color:#a63a2e; margin-right:10px; font-family:'Noto Serif SC'; }
+.s8 .tlbar { border-top:1px solid #d9d4c4; }
+.s8 .yr { font-family:'Ma Shan Zheng','Noto Serif SC'; color:#2b2a26; font-size:21px; }
+.s8 .dot { width:10px; height:10px; border-radius:50%; background:#d9d4c4; display:inline-block; margin:0 8px; vertical-align:middle; }
+.s8 .dot.on { background:#a63a2e; }
+.s8 .tlbar small { font-size:9px; letter-spacing:.4em; color:#8b857a; margin-right:auto; font-family:'Noto Serif SC'; }
+.s8 .chip { font-family:'Noto Serif SC',serif; font-size:12px; color:#55524a; background:transparent; border:none; border-bottom:1px solid transparent; padding:4px 6px 3px; }
+.s8 .chip.on { color:#a63a2e; border-bottom:2px solid #a63a2e; }
+.s8 .go { font-family:'Ma Shan Zheng','Noto Serif SC'; font-size:15px; color:#f4f1e7; background:#a63a2e; border:none; border-radius:3px; padding:8px 20px 7px; letter-spacing:.2em; }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1><b>风格样张 · 第二批</b> · STYLE SAMPLES II</h1>
+  <p>另外四种方向：靛蓝和风 / 航空信件 / 新粗野 / 水墨长卷。同样是撒哈拉一夜 + 时间轴 + 筛选 + 按钮。挑一个，整站换肤。</p>
+</div>
+<main>
+
+  <!-- S5 靛蓝和风 -->
+  <section class="s5">
+    <div class="sh"><b>05 靛蓝和风</b><span>INDIGO Ukiyo</span></div>
+    <p class="trait">蓝染靛青 × 和纸米白 × 朱红点缀 —— 青海波纹样、明朝体标题、竖排文字，像一本京都老旅馆的旅居手帳。静、雅、有匠气。</p>
+    <div class="stage">
+      <div class="row">
+        <div class="map">
+          <svg class="route" viewBox="0 0 300 220" preserveAspectRatio="none"><path d="M28 178 Q120 62 268 92"/></svg>
+          <span class="pin" style="left:24px; top:170px;"><small>梅尔祖卡</small></span>
+          <span class="pin" style="left:262px; top:84px;"><small>罗马</small></span>
+          <span class="vlab">撒哈拉之夜 · 星垂平野</span>
+        </div>
+        <div class="side">
+          <div class="card">
+            <span class="no">No.11 — Sahara</span>
+            <h3>撒哈拉的夜，星星密得让人失语</h3>
+            <p class="frag"><i>23:40</i>躺在沙脊上看银河，流星划过三次，许愿都来不及。</p>
+          </div>
+          <div class="uibar">
+            <button class="chip on">震撼</button><button class="chip">治愈</button><button class="chip">热血</button>
+            <button class="go">忆路绘卷</button>
+          </div>
+        </div>
+      </div>
+      <div class="tlbar"><small>TIMELINE · 时序</small><span class="yr">MMXXIV</span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </section>
+
+  <!-- S6 航空信件 -->
+  <section class="s6">
+    <div class="sh"><b>06 航空信件</b><span>AIR MAIL</span></div>
+    <p class="trait">牛皮纸 × 红蓝斜纹航空信封 × 打字机字 —— 邮票、齿孔、票根，每一页记忆都是寄给未来的信。怀旧、温润、有旅途的邮戳味。</p>
+    <div class="stage">
+      <div class="row">
+        <div class="map">
+          <svg class="route" viewBox="0 0 300 220" preserveAspectRatio="none"><path class="r1" d="M28 178 Q120 62 268 92"/><path class="r2" d="M28 178 Q120 62 268 92"/></svg>
+          <span class="stamp"><b>PAR AVION<br>SAHARA<br>2024</b></span>
+        </div>
+        <div class="side">
+          <div class="card">
+            <span class="no">POSTCARD NO.11</span>
+            <h3>撒哈拉的夜，星星密得让人失语</h3>
+            <p class="frag"><i>23:40 --</i>躺在沙脊上看银河，流星划过三次，许愿都来不及。</p>
+          </div>
+          <div class="uibar">
+            <button class="chip on">震撼</button><button class="chip">治愈</button><button class="chip">热血</button>
+            <button class="go">✉ 寄出这段回忆</button>
+          </div>
+        </div>
+      </div>
+      <div class="tlbar"><small>TIMELINE · 邮程</small><span class="yr">2024</span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </section>
+
+  <!-- S7 新粗野 -->
+  <section class="s7">
+    <div class="sh"><b>07 新粗野</b><span>NEO BRUTAL</span></div>
+    <p class="trait">高饱和撞色 × 粗黑描边 × 硬投影 —— 荧光绿、泡泡糖粉、天蓝大色块怼在一起，超大号黑体，当代海报感。响亮、直白、有劲。</p>
+    <div class="stage">
+      <div class="row">
+        <div class="map">
+          <b>SAHARA→ROME</b>
+          <svg class="route" viewBox="0 0 300 220" preserveAspectRatio="none"><path d="M28 178 Q120 62 268 92"/></svg>
+          <span class="pin" style="left:22px; top:168px;"></span>
+          <span class="pin" style="left:258px; top:82px;"></span>
+        </div>
+        <div class="side">
+          <div class="card">
+            <span class="no">NO.11</span>
+            <h3>撒哈拉的夜，星星密得让人失语</h3>
+            <p class="frag"><i>23:40</i>躺在沙脊上看银河，流星划过三次，许愿都来不及。</p>
+          </div>
+          <div class="uibar">
+            <button class="chip on">震撼</button><button class="chip">治愈</button><button class="chip">热血</button>
+            <button class="go">✦ 生成回忆路线</button>
+          </div>
+        </div>
+      </div>
+      <div class="tlbar"><small>时间轴 TIMELINE</small><span class="yr">2024</span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </section>
+
+  <!-- S8 水墨长卷 -->
+  <section class="s8">
+    <div class="sh"><b>08 水墨长卷</b><span>INK SCROLL</span></div>
+    <p class="trait">宣纸留白 × 淡墨山影 × 一点朱砂 —— 路线是一笔墨迹，印章落在角落，毛笔字题写地名。空、静、诗意，像一幅摊开的行旅图。</p>
+    <div class="stage">
+      <div class="row">
+        <div class="map">
+          <svg class="mount" viewBox="0 0 300 220" preserveAspectRatio="none"><path d="M0 220 L60 150 L110 195 L170 120 L230 185 L300 140 V220 Z" fill="#c9c4b2"/><path d="M0 220 L80 175 L150 205 L240 160 L300 195 V220 Z" fill="#d9d4c4"/></svg>
+          <svg class="route" viewBox="0 0 300 220" preserveAspectRatio="none" style="position:absolute;inset:0;"><path d="M28 165 Q120 60 268 86"/></svg>
+          <span class="pin" style="left:24px; top:160px;"><small>撒哈拉</small></span>
+          <span class="pin" style="left:262px; top:80px;"><small>罗马</small></span>
+          <span class="seal">游</span>
+        </div>
+        <div class="side">
+          <div class="card">
+            <span class="no">卷 之 十 一</span>
+            <h3>撒哈拉的夜，星星密得让人失语</h3>
+            <p class="frag"><i>亥时三刻</i>卧于沙脊观银河，流星三度掠过，许愿未及。</p>
+          </div>
+          <div class="uibar">
+            <button class="chip on">震撼</button><button class="chip">治愈</button><button class="chip">热血</button>
+            <button class="go">✦ 绘行旅图</button>
+          </div>
+        </div>
+      </div>
+      <div class="tlbar"><small>行旅时序</small><span class="yr">甲辰</span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
