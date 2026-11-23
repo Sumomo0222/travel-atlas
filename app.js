@@ -728,7 +728,8 @@
       const src = r.querySelector('.f-src').value.trim();
       if (!src) return null;
       const cap = r.querySelector('.f-cap').value.trim() || '照片';
-      return /^https?:\/\//i.test(src) ? { url: src, cap } : { seed: src, w: 720, h: 540, cap };
+      // 完整 URL、本地路径（assets/…）都按地址处理；否则视为 picsum seed
+      return (/^https?:\/\//i.test(src) || src.includes('/')) ? { url: src, cap } : { seed: src, w: 720, h: 540, cap };
     }).filter(Boolean);
     const fragments = [...$('#ed-frags').querySelectorAll('.ed-row')].map(r => ({
       time: r.querySelector('.f-time').value || '——',

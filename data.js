@@ -24,11 +24,11 @@ window.ATLAS = (function () {
     {
       id: 'kyoto-2019', city: '京都', latin: 'KYOTO', country: '日本',
       coord: [35.0116, 135.7681], labelSide: 't', date: '2019-04-06', mood: '治愈', theme: '人文古迹',
-      title: '哲学之道的樱花，落得很慢', note: '第一次一个人出门', zoom: 6,
+      title: '京都的暮色，灯笼一盏盏亮起', note: '第一次一个人出门', zoom: 6,
       photos: [
-        { seed: 'kyoto-path', w: 720, h: 540, cap: '哲学之道 · 花瓣铺满石阶' },
-        { seed: 'kyoto-temple', w: 720, h: 540, cap: '南禅寺 · 晨间的水声' },
-        { seed: 'kyoto-lantern', w: 720, h: 540, cap: '先斗町 · 灯笼初上' },
+        { url: 'assets/photos/kyoto-1.jpg', cap: '八坂塔下 · 暮色灯笼' },
+        { url: 'assets/photos/kyoto-2.jpeg', cap: '东山 · 石板小路' },
+        { url: 'assets/photos/kyoto-3.jpg', cap: '五重塔 · 落日剪影' },
       ],
       fragments: [
         { time: '05:50', text: '清晨的南禅寺几乎没有人，水声比钟声更早醒来。' },
@@ -41,9 +41,9 @@ window.ATLAS = (function () {
       coord: [22.3193, 114.1694], labelSide: 'l', date: '2019-10-19', mood: '悸动', theme: '城市漫游',
       title: '庙街的霓虹，是热的', note: '会想念这种热', zoom: 6,
       photos: [
-        { seed: 'hk-neon', w: 720, h: 540, cap: '油麻地 · 霓虹层叠' },
-        { seed: 'hk-food', w: 720, h: 540, cap: '庙街 · 煲仔饭的火' },
-        { seed: 'hk-harbour', w: 720, h: 540, cap: '天台 · 维港夜' },
+        { url: 'assets/photos/hongkong-1.jpg', cap: '油麻地 · 夜街车流' },
+        { url: 'assets/photos/hongkong-2.jpeg', cap: '霓虹招牌 · 红与黄' },
+        { url: 'assets/photos/hongkong-3.jpeg', cap: '霓虹字牌 · 特写' },
       ],
       fragments: [
         { time: '21:10', text: '从油麻地地铁站出来，霓虹灯牌一层叠一层，像掉进了老电影。' },
@@ -56,9 +56,8 @@ window.ATLAS = (function () {
       coord: [25.6065, 100.2676], labelSide: 'l', date: '2020-08-15', mood: '放空', theme: '城市漫游',
       title: '在洱海边，把日子过成慢镜头', note: 'gap 的日子', zoom: 6,
       photos: [
-        { seed: 'dali-road', w: 720, h: 540, cap: '环海西路 · 风' },
-        { seed: 'dali-cat', w: 720, h: 540, cap: '下午三点的猫' },
-        { seed: 'dali-dusk', w: 720, h: 540, cap: '苍山洱海 · 暮色' },
+        { url: 'assets/photos/dali-1.jpg', cap: '洱海 · 半岛村落' },
+        { url: 'assets/photos/dali-2.jpg', cap: '白房子与木船' },
       ],
       fragments: [
         { time: '08:00', text: '骑电动车环海西路，风把头发吹成一团海草。' },
@@ -71,9 +70,8 @@ window.ATLAS = (function () {
       coord: [36.7310, 99.7813], date: '2021-05-22', mood: '热血', theme: '公路之旅',
       title: '环湖公路上，风比车快', note: '油门到底的一天', zoom: 5,
       photos: [
-        { seed: 'qh-sunrise', w: 720, h: 540, cap: '黑马河 · 日出' },
-        { seed: 'qh-road', w: 720, h: 540, cap: '环湖西路 · 无人' },
-        { seed: 'qh-stars', w: 720, h: 540, cap: '茶卡 · 星空盐粒' },
+        { url: 'assets/photos/qinghai-1.jpg', cap: '湖岸 · 湿地与沙丘' },
+        { url: 'assets/photos/qinghai-2.jpg', cap: '茶卡 · 盐湖铁轨' },
       ],
       fragments: [
         { time: '06:30', text: '黑马河的日出把湖面烧成金色，帐篷外冷得直跺脚。' },
@@ -86,9 +84,8 @@ window.ATLAS = (function () {
       coord: [24.4798, 118.0894], date: '2021-10-03', mood: '治愈', theme: '美食之旅',
       title: '沙茶面的汤底，是八市的烟火', note: '胃是第二颗心脏', zoom: 6,
       photos: [
-        { seed: 'xm-market', w: 720, h: 540, cap: '八市 · 海蛎与阿婆' },
-        { seed: 'xm-noodle', w: 720, h: 540, cap: '沙茶面 · 一号锅' },
-        { seed: 'xm-port', w: 720, h: 540, cap: '沙坡尾 · 渔船与咖啡' },
+        { url: 'assets/photos/xiamen-1.jpg', cap: '中山路 · 骑楼夜色' },
+        { url: 'assets/photos/xiamen-2.jpg', cap: '鹭岛 · 海岸天际线' },
       ],
       fragments: [
         { time: '07:30', text: '八市的海蛎还带着海水味，阿婆教我挑「紧一点的」。' },
@@ -101,9 +98,9 @@ window.ATLAS = (function () {
       coord: [28.2282, 112.9388], labelSide: 't', date: '2022-01-28', mood: '狂喜', theme: '美食之旅',
       title: '凌晨两点，小龙虾还在上桌', note: '辣到怀疑人生', zoom: 6,
       photos: [
-        { seed: 'cs-supper', w: 720, h: 540, cap: '文和友 · 复古城市' },
-        { seed: 'cs-crayfish', w: 720, h: 540, cap: '口味虾 · 夜宵摊' },
-        { seed: 'cs-night', w: 720, h: 540, cap: '解放西路 · 长夜' },
+        { url: 'assets/photos/changsha-1.jpg', cap: '梅溪湖 · 城市暮色' },
+        { url: 'assets/photos/changsha-2.jpg', cap: '摩天轮 · 城市夜' },
+        { url: 'assets/photos/changsha-3.jpg', cap: '橘子洲 · 江边烟花' },
       ],
       fragments: [
         { time: '19:00', text: '文和友排队两个小时，进去才发现是一座「复古城市」。' },
@@ -116,9 +113,9 @@ window.ATLAS = (function () {
       coord: [27.9660, 100.2960], labelSide: 'l', date: '2022-08-12', mood: '震撼', theme: '山野徒步',
       title: '牛奶海之上，只剩下呼吸声', note: '呼吸的重量', zoom: 6,
       photos: [
-        { seed: 'dc-trek', w: 720, h: 540, cap: '亚丁 · 转山' },
-        { seed: 'dc-lake', w: 720, h: 540, cap: '牛奶海 · 不讲道理的蓝' },
-        { seed: 'dc-snow', w: 720, h: 540, cap: '下山 · 夏天的雪粒' },
+        { url: 'assets/photos/daocheng-1.jpg', cap: '牛奶海 · 不讲道理的蓝' },
+        { url: 'assets/photos/daocheng-2.jpg', cap: '高原海子 · 云影' },
+        { url: 'assets/photos/daocheng-3.jpg', cap: '山脚 · 红亭与村落' },
       ],
       fragments: [
         { time: '05:20', text: '海拔四千六，每走十步喘一口，牦牛都比我从容。' },
@@ -131,9 +128,9 @@ window.ATLAS = (function () {
       coord: [64.1466, -21.9426], date: '2023-02-18', mood: '狂喜', theme: '雪国极光',
       title: '极光来的那晚，整个天都在燃烧', note: '眼泪是热的', zoom: 4,
       photos: [
-        { seed: 'is-road', w: 720, h: 540, cap: '一号公路 · 追光' },
-        { seed: 'is-aurora', w: 720, h: 540, cap: '极光 · 绿色光帘' },
-        { seed: 'is-back', w: 720, h: 540, cap: '后座 · 回望' },
+        { url: 'assets/photos/iceland-1.jpg', cap: '冰河湖 · 极光倒影' },
+        { url: 'assets/photos/iceland-2.jpg', cap: '追光的人' },
+        { url: 'assets/photos/iceland-3.webp', cap: '午夜 · 山与光帘' },
       ],
       fragments: [
         { time: '21:30', text: 'KP 指数爆表，车追着一块晴空跑了两个小时。' },
@@ -146,9 +143,8 @@ window.ATLAS = (function () {
       coord: [18.7883, 98.9853], labelSide: 'b', date: '2023-06-10', mood: '放空', theme: '城市漫游',
       title: '古城的午后，时间用脚步计量', note: '时间变慢了', zoom: 6,
       photos: [
-        { seed: 'cm-old', w: 720, h: 540, cap: '古城 · 睡熟的狗' },
-        { seed: 'cm-post', w: 720, h: 540, cap: '明信片 · 慢慢写字' },
-        { seed: 'cm-cloud', w: 720, h: 540, cap: '素贴山 · 云海入城' },
+        { url: 'assets/photos/chiangmai-1.jpeg', cap: '天灯 · 升空' },
+        { url: 'assets/photos/chiangmai-2.jpg', cap: '素贴山 · 晨雾双塔' },
       ],
       fragments: [
         { time: '09:00', text: '周日夜市的余温还在，古城的狗睡得四仰八叉。' },
@@ -161,9 +157,8 @@ window.ATLAS = (function () {
       coord: [48.8566, 2.3522], labelSide: 'l', date: '2023-11-24', mood: '忧郁', theme: '人文古迹',
       title: '十一月的巴黎，适合一个人走', note: '一个人的巴黎', zoom: 5,
       photos: [
-        { seed: 'pa-museum', w: 720, h: 540, cap: '奥赛 · 梵高的下午' },
-        { seed: 'pa-seine', w: 720, h: 540, cap: '塞纳河 · 旧书摊收摊' },
-        { seed: 'pa-mont', w: 720, h: 540, cap: '蒙马特 · 难过的美' },
+        { url: 'assets/photos/paris-1.jpeg', cap: '塞纳河 · 秋日石桥' },
+        { url: 'assets/photos/paris-2.jpg', cap: '蒙马特 · 石阶落叶' },
       ],
       fragments: [
         { time: '10:20', text: '奥赛博物馆五楼，看了一上午的梵高，眼睛发热。' },
@@ -176,9 +171,9 @@ window.ATLAS = (function () {
       coord: [31.0803, -4.0124], date: '2024-04-17', mood: '震撼', theme: '沙漠星夜',
       title: '撒哈拉的夜，星星密得让人失语', note: '失语的夜', zoom: 5,
       photos: [
-        { seed: 'sa-camel', w: 720, h: 540, cap: '驼队 · 入沙海' },
-        { seed: 'sa-drum', w: 720, h: 540, cap: '鼓声停了 · 另一个星球' },
-        { seed: 'sa-stars', w: 720, h: 540, cap: '银河 · 三颗流星' },
+        { url: 'assets/photos/sahara-1.jpg', cap: '驼队 · 暮色沙丘' },
+        { url: 'assets/photos/sahara-2.jpg', cap: '牵驼人 · 入沙海' },
+        { url: 'assets/photos/sahara-3.jpg', cap: '星空 · 营地帐篷' },
       ],
       fragments: [
         { time: '17:00', text: '骆驼队走进沙丘深处，驼铃声被风磨得很钝。' },
@@ -191,9 +186,9 @@ window.ATLAS = (function () {
       coord: [-8.5069, 115.2625], date: '2024-07-09', mood: '治愈', theme: '海岛与海',
       title: '乌布的日子，被雨和稻田泡软', note: '被泡软的日子', zoom: 6,
       photos: [
-        { seed: 'bl-rice', w: 720, h: 540, cap: '德格拉朗 · 梯田晨雾' },
-        { seed: 'bl-rain', w: 720, h: 540, cap: '凉亭 · 雨打芭蕉' },
-        { seed: 'bl-sunset', w: 720, h: 540, cap: '金巴兰 · 落日烧烤' },
+        { url: 'assets/photos/bali-1.jpg', cap: '德格拉朗 · 梯田' },
+        { url: 'assets/photos/bali-2.jpeg', cap: '梯田 · 晨雾俯瞰' },
+        { url: 'assets/photos/bali-3.jpg', cap: '海神庙 · 落日' },
       ],
       fragments: [
         { time: '07:00', text: '德格拉朗的梯田晨雾未散，稻田绿得发亮。' },
@@ -206,9 +201,9 @@ window.ATLAS = (function () {
       coord: [35.3194, 139.5461], labelSide: 'b', date: '2025-04-12', mood: '悸动', theme: '城市漫游',
       title: '江之电穿过樱花，开进十六岁', note: '十六岁的电车', zoom: 6,
       photos: [
-        { seed: 'km-cross', w: 720, h: 540, cap: '镰仓高校前 · 等电车' },
-        { seed: 'km-wisteria', w: 720, h: 540, cap: '长谷寺 · 紫藤半开' },
-        { seed: 'km-beach', w: 720, h: 540, cap: '湘南海岸 · 青春片的风' },
+        { url: 'assets/photos/kamakura-1.jpg', cap: '江之电 · 501 号' },
+        { url: 'assets/photos/kamakura-2.jpg', cap: '湘南海岸 · 冲浪的人' },
+        { url: 'assets/photos/kamakura-3.jpg', cap: '海岸 · 富士落日' },
       ],
       fragments: [
         { time: '10:15', text: '镰仓高校前的道口，海在画面尽头，等一列绿皮电车。' },
@@ -221,9 +216,9 @@ window.ATLAS = (function () {
       coord: [46.5407, 12.1357], labelSide: 't', date: '2025-09-06', mood: '热血', theme: '山野徒步',
       title: '刀锋山脊上，云在脚底下流', note: '腿在抖，心在跳', zoom: 5,
       photos: [
-        { seed: 'do-dawn', w: 720, h: 540, cap: 'Tre Cime · 粉金晨光' },
-        { seed: 'do-ridge', w: 720, h: 540, cap: '山脊线 · 云在脚下' },
-        { seed: 'do-hut', w: 720, h: 540, cap: '山屋 · 苹果卷与热茶' },
+        { url: 'assets/photos/dolomites-1.jpg', cap: '刀锋山 · 红衣行者' },
+        { url: 'assets/photos/dolomites-2.jpg', cap: '山径 · 绿甸石峰' },
+        { url: 'assets/photos/dolomites-3.jpeg', cap: '垭口 · 晚霞' },
       ],
       fragments: [
         { time: '06:10', text: 'Tre Cime 的晨光把岩壁染成粉金色，冷，但值得。' },
@@ -236,9 +231,8 @@ window.ATLAS = (function () {
       coord: [38.6431, 34.8286], date: '2026-03-21', mood: '热血', theme: '沙漠星夜',
       title: '凌晨四点半，为追一只热气球', note: '值得早起的热血', zoom: 5,
       photos: [
-        { seed: 'cp-dark', w: 720, h: 540, cap: '凌晨四点半 · 出发' },
-        { seed: 'cp-balloons', w: 720, h: 540, cap: '一百只热气球 · 升空' },
-        { seed: 'cp-land', w: 720, h: 540, cap: '落地 · 全年最佳能见度' },
+        { url: 'assets/photos/cappadocia-1.jpg', cap: '热气球 · 精灵烟囱' },
+        { url: 'assets/photos/cappadocia-2.jpg', cap: '河谷 · 徒步' },
       ],
       fragments: [
         { time: '04:30', text: '被闹钟叫醒的瞬间，困意和期待打了个平手。' },
@@ -251,9 +245,9 @@ window.ATLAS = (function () {
       coord: [41.9028, 12.4964], labelSide: 'b', date: '2026-05-30', mood: '思念', theme: '人文古迹',
       title: '还没离开罗马，就开始想念它', note: '为了再来一次', zoom: 5,
       photos: [
-        { seed: 'ro-pantheon', w: 720, h: 540, cap: '万神殿 · 光柱' },
-        { seed: 'ro-alley', w: 720, h: 540, cap: '特拉斯提弗列 · 迷路' },
-        { seed: 'ro-fountain', w: 720, h: 540, cap: '许愿池 · 一枚硬币' },
+        { url: 'assets/photos/roma-1.jpg', cap: '万神殿 · 落日广场' },
+        { url: 'assets/photos/roma-2.jpg', cap: '许愿池 · 夜' },
+        { url: 'assets/photos/roma-3.jpg', cap: '特拉斯提弗列 · 小巷' },
       ],
       fragments: [
         { time: '09:00', text: '万神殿的光柱从穹顶落下来，两千年的时间有了形状。' },
